@@ -1,58 +1,31 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sistem Informasi Rapor Online | Kemenag RI</title>
+  <title>Sistem Informasi Farmasi | Dinas Kesehatan Kabupaten Kampar</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect.
-  -->
-  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-  <link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
-  <link rel="stylesheet" href="dist/css/skins/skin-black.min.css">
+  <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-green.min.css') }}">
 
+  @yield('css')
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
@@ -80,16 +53,12 @@ desired effect
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
                 <p>
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
@@ -111,8 +80,8 @@ desired effect
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
 
+  <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar Menu -->
@@ -126,14 +95,27 @@ desired effect
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>Data Seting</span>
+            <span>Manajemen Sistem</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href=""><i class="fa fa-circle-o"></i> Data Badan Hukum</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Setting Aplikasi</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Pengguna Aplikasi</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Backup Database</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Data Seting</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> Seting Aplikasi</a></li>
             <li><a href=""><i class="fa fa-circle-o"></i> Pengguna Aplikasi</a></li>
           </ul>
         </li>
@@ -146,13 +128,14 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Pegawai</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Obat</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Golongan Obat</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Harga Obat</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Jenis Obat</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Satuan Besar</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Satuan Kecil</a></li>
+            <li><a href="{!! URL::to('admin/pegawai') !!}"><i class="fa fa-circle-o"></i> Pegawai</a></li>
+            <li><a href="{!! URL::to('admin/obat') !!}"><i class="fa fa-circle-o"></i> Obat</a></li>
+            <li><a href="{!! URL::to('admin/hargaobat') !!}"><i class="fa fa-circle-o"></i> Harga Obat</a></li>
+            <li><a href="{!! URL::to('admin/golonganobat') !!}"><i class="fa fa-circle-o"></i> Golongan Obat</a></li>
+            <li><a href="{!! URL::to('admin/terapiobat') !!}"><i class="fa fa-circle-o"></i> Terapi Obat</a></li>
+            <li><a href="{!! URL::to('admin/jenisobat') !!}"><i class="fa fa-circle-o"></i> Jenis Obat</a></li>
+            <li><a href="{!! URL::to('admin/satuanbesar') !!}"><i class="fa fa-circle-o"></i> Satuan Besar</a></li>
+            <li><a href="{!! URL::to('admin/satuankecil') !!}"><i class="fa fa-circle-o"></i> Satuan Kecil</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -164,9 +147,9 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Puskemas</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Kecamatan</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Kelurahan/ Desa</a></li>
+            <li><a href="{!! URL::to('admin/puskesmas') !!}"><i class="fa fa-circle-o"></i> Puskemas</a></li>
+            <li><a href="{!! URL::to('admin/kecamatan') !!}"><i class="fa fa-circle-o"></i> Kecamatan</a></li>
+            <li><a href="{!! URL::to('admin/kelurahan') !!}"><i class="fa fa-circle-o"></i> Kelurahan/ Desa</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -235,14 +218,14 @@ desired effect
     @endif
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+      <!-- <h1>
         Page Header
         <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol>
+      </ol> -->
     </section>
 
     <!-- Main content -->
@@ -271,12 +254,27 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 
+
+<script>
+   $(document).on('ready', function() {
+        var url = window.location;
+        // Will only work if string in href matches with location
+        $('.treeview-menu li a[href="' + url + '"]').parent().addClass('active');
+        $('.treeview-menu li a[href="' + url + '"]').parent().parent().parent().addClass('active');
+        // Will also work for relative and absolute hrefs
+        // $('.treeview-menu li a').filter(function() {
+        //     return this.href == url;
+        // }).parent().parent().parent().addClass('active');
+    });
+</script>
+<!-- AdminLTE App -->
+<script src="{{ asset('dist/js/app.min.js') }}"></script>
+
+@yield('script')
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
